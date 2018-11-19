@@ -1,5 +1,5 @@
 /**
- * Determines if a string has all unique characters.
+ * Determine if a string has all unique characters.
  * @author Ashaun Thomas
  */
 
