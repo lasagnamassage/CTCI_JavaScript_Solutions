@@ -10,7 +10,7 @@ let testCases = [
 ];
 
 /**
- * This function checks to see if a string is unique by using
+ * Checks to see if a string is unique by using
  * the built-in Set object. This implementation takes advantage
  * of the fact that the Set object doesn't allow duplicates by
  * comparing the size of the array as a set. All duplicates would
@@ -29,6 +29,30 @@ function isUnique(string) {
     }
 }
 
+/**
+ * Checks to see if a string is unique without the use of 
+ * additional data structures.
+ * TODO: Fix this, it's broken :(
+ * @param string String of characters to analyze
+ */
+function isUniqueNoDataStructures(string) {
+    for (let i = 0; i < string.length; i++) {
+        for (let j = i; j < string.length; j++ ) {
+            if (string[i] === string[j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+    
+}
+
 for (let i = 0; i < testCases.length; i++) {
     console.log(`${testCases[i]} is unique?  ${isUnique(testCases[i])}`);
+}
+
+console.log('----------------No data structures---------------------');
+
+for (let i = 0; i < testCases.length; i++) {
+    console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
 }

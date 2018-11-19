@@ -6,5 +6,5 @@
 
 
  function isPermutation(string1, string2) {
-
+    
  }
