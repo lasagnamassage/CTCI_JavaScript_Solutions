@@ -32,7 +32,7 @@ function isUnique(string) {
 /**
  * Checks to see if a string is unique without the use of 
  * additional data structures.
- * TODO: Fix this, it's broken :(
+ * TODO: Fix this, it's broken.
  * @param string String of characters to analyze
  */
 function isUniqueNoDataStructures(string) {
