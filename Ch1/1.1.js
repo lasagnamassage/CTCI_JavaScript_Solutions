@@ -19,6 +19,9 @@ let testCases = [
  * TODO: Prompt for ASCII or Unicode for more fitting best cases
  * @param string String of characters to analyze
  */
+
+ var ASCII_FLAG;
+
 function isUnique(string) {
     let inputStringArr = string.toLowerCase().split('');
     let inputSet = new Set(inputStringArr);
@@ -52,8 +55,8 @@ for (let i = 0; i < testCases.length; i++) {
     console.log(`${testCases[i]} is unique?  ${isUnique(testCases[i])}`);
 }
 
-console.log('----------------No data structures---------------------');
+// console.log('----------------No data structures---------------------');
 
-for (let i = 0; i < testCases.length; i++) {
-    console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
-}
+// for (let i = 0; i < testCases.length; i++) {
+//     console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
+// }
