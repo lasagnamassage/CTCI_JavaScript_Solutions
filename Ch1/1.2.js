@@ -37,6 +37,31 @@
  }
 
  /**
+  * This implementation uses the code values of the characters
+  * to deduce if two strings are permutations.
+  * @param  string1 String to compare or compare to
+  * @param  string2 String to compare or compare to
+  */
+ function isPermutationAlt(string1, string2) {
+    let stringOneTotal = 0;
+    let stringTwoTotal = 0;
+    if (string1.length != string2.length) {
+        return false;
+    }
+    for (let i = 0; i < string1.length; i++) {
+        stringOneTotal += string1.charCodeAt(i);
+        stringTwoTotal += string2.charCodeAt(i);
+    }
+    if (stringOneTotal != stringTwoTotal) {
+        return false;
+    }
+    else {
+        return true;
+    }
+ }
+
+
+ /**
   * Converts strings to intended format
   * @param string The string we want to convert
   * @return The converted string
