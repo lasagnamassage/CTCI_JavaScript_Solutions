@@ -5,73 +5,44 @@
  */
 
  var testCases = [
-     ["ash","ashaun"],
-     ["dksald","eowqpeoqp"],
-     ["(*$@", "@$*(#*@*#"],
-     ["Hello", "Hello"],
-     ["hello", "Hello"],
-     ["\imlm", "\i\m\Omlm"],
-     [" a r t ", "art"]
+     ["ash","hsa"], // true
+     ["aiskl","nmca"], // false
+     ["(*$@", "@$*("], // true
+     ["Hello", "Hello"], // true
+     ["hello", "Hello"], // true
+     ["\imlm", "\i\m\Omlm"], // true
+     [" a r t ", "art"] // true
  ]
 
 
  /**
-  * Takes two strings, compares them to find if permutations
-  * of one exists in the other, then returns true or false based
-  * on those findings
+  * Takes two strings and compares them by sorting the 
+  * characters and comparing the results.
   * @param string1 String to compare or compare to
   * @param string2 String to compare or compare to
   */
  function isPermutation(string1, string2) {
-    string1 = sanitize(string1);
-    string2 = sanitize(string2);
-    if (string1 === string2) {
+    // Same string edge case
+    if (string1.length != string2.length) {
+        return false;
+    }
+    rStr1 = sanitize(string1);
+    rStr2 = sanitize(string2);
+    if (rStr1 === rStr2) {
         return true;
     }
-    let bigString = string1 >= string2 ? string1 : string2;
-    let lilString = bigString === string1 ? string2 : string1;
-    let bigMap = mapify(bigString); 
-    let lilMap = mapify(lilString);
-
-    for (let keyPair of bigMap) {
-        let letter = keyPair[0];
-        let occurence = keyPair[1];
-        if (lilMap.has(letter)) {
-            let value = lilMap.get(letter) - occurence;
-            lilMap.set(letter, value);
-            if (lilMap.get(letter) <= 0) {
-                lilMap.delete(letter);
-            }
-        }
-        if (lilMap.size === 0) {
-            return true;
-        }
+    else {
+        return false;
     }
-    return false;
  }
 
  /**
-  * This helper function converts input strings into
-  * maps of letters and their occurances. O(N)
-  * @param string String to be converted into a map
-  * @return Resulting map with character/occurance key-pair
-  */
- function mapify(string) {
-    let result = new Map();
-    string.split('').forEach(letter => {
-        let value = result.has(letter) ? result.get(letter) + 1 : 1;
-        result.set(letter, value);
-    })
-    return result;
- }
-
- /**
-  * Converts strings to conventional format
+  * Converts strings to intended format
   * @param string The string we want to convert
   * @return The converted string
   */
  function sanitize(string) {
-     return string.replace('/\s/g', '');
+     return string.replace('/\s/g', '').split('').sort().join('');
  }
 
  /**
