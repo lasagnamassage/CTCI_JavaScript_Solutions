@@ -15,7 +15,8 @@ let testCases = [
  * of the fact that the Set object doesn't allow duplicates by
  * comparing the size of the array as a set. All duplicates would
  * be removed in the set, causing it's size to be smaller than the
- * length of an array representing the string
+ * length of an array representing the string.
+ * TODO: Prompt for ASCII or Unicode for more fitting best cases
  * @param string String of characters to analyze
  */
 function isUnique(string) {
