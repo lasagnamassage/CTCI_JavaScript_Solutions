@@ -2,12 +2,30 @@
  * Replace all spaces in a string with '%20'.
  * Assume that the string has sufficient space
  * at the end to hold additional characters, and that you're
- * given the "true" length of the array
+ * given the "true" length of the array (sans extra spaces for new string)
  * @author Ashaun Thomas
  */
+const REPLACEMENT_VALUE = '%20';
+var testCase = ["Hello My Name Is Ashaun            ", 23 ];
 
 
-
- function URLify(inputString) {
-    
+/**
+ * Replaces spaces with given replacement value using
+ * JavaScript's built-in slice and replace string methods.
+ * Regex matches are used in replace function and  have time 
+ * complexity of O(N), thus this function has O(N) where N is
+ * the length of the string given (not including trailing spaces)
+ * @param inputs Array containing a string element and a number element representing the length of the string sans spaces
+ */
+ function URLify(inputs) {
+    let spaceRegex = /\s/g;
+    let trimmedString = inputs[0].slice(0,inputs[1]);
+    return trimmedString.replace(spaceRegex, REPLACEMENT_VALUE);
  }
+
+ function main() {
+     console.log(URLify(testCase));
+ }
+
+ main();
+
