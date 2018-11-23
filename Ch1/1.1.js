@@ -3,6 +3,13 @@
  * @author Ashaun Thomas
  */
 
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 let testCases = [
     'abcd',
     'abbc',
@@ -16,13 +23,16 @@ let testCases = [
  * comparing the size of the array as a set. All duplicates would
  * be removed in the set, causing it's size to be smaller than the
  * length of an array representing the string.
- * TODO: Prompt for ASCII or Unicode for more fitting best cases
  * @param string String of characters to analyze
  */
 
- var ASCII_FLAG;
+const ASCII_CHARACTERS = 256;
+const UNICODE_CHARACTERS = 1114112;
 
 function isUnique(string) {
+    if (isInvalidASCII(string) || isInvalidUnicode(string)) {
+        return false;
+    }
     let inputStringArr = string.toLowerCase().split('');
     let inputSet = new Set(inputStringArr);
     if (inputStringArr.length > inputSet.size) {
@@ -32,6 +42,29 @@ function isUnique(string) {
         return true;
     }
 }
+
+/**
+ * Tests if string is invalid ASCII string using
+ * the Pigeonhole Principle
+ * @param str 
+ */
+function isInvalidASCII(str) {
+    if (/^[\x00-\x7F]*$/.test(str) && str.length > ASCII_CHARACTERS) {
+        return true;
+    }
+}
+
+/**
+ * Tests if the string is invalid Unicode string using
+ * the Pigeonhole Principle
+ * @param str
+ */
+function isInvalidUnicode(str) {
+    if (str.length > UNICODE_CHARACTERS) {
+        return true;
+    }
+}
+
 
 /**
  * Checks to see if a string is unique without the use of 

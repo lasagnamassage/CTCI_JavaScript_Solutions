@@ -17,7 +17,7 @@
 
  /**
   * Takes two strings and compares them by sorting the 
-  * characters and comparing the results.
+  * characters and comparing the results. (ASCII)
   * @param string1 String to compare or compare to
   * @param string2 String to compare or compare to
   */
