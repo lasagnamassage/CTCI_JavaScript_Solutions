@@ -6,7 +6,10 @@
  * @author Ashaun Thomas
  */
 const REPLACEMENT_VALUE = '%20';
-var testCase = ["Hello My Name Is Ashaun            ", 23 ];
+var testCases = [
+    ["Hello My Name Is Ashaun            ", 23 ],
+    [" LOL TO THE M A X                  ", 17]
+];
 
 
 /**
@@ -24,7 +27,9 @@ var testCase = ["Hello My Name Is Ashaun            ", 23 ];
  }
 
  function main() {
-     console.log(URLify(testCase));
+     for (let i = 0; i < testCases.length; i++) {
+        console.log(URLify(testCases[i]));
+     }
  }
 
  main();
