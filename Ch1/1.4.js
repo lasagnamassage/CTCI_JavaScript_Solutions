@@ -6,11 +6,11 @@
  */
 
  var testCases = [
-     "tact coa",
-     "hannah",
-     "dksladka dksld kasldk sal",
-     "racecar", 
-     "Repaper"
+     "tact coa", // true
+     "hannah", // true
+     "dksladka dksld kasldk sal", // false
+     "racecar", // true 
+     "Repaper" // true
  ]
 
 
@@ -21,7 +21,7 @@
   * @param string The string we're testing 
   */
  function isPalindromePermutation(string) {
-    let sanitizedStr = string.replace(/\s/g,'').toLowerCase().split('').join('');
+    let sanitizedStr = string.replace(/\s/g,'').toLowerCase();
     let sanitizedSet = new Set(sanitizedStr);
     let expectedLength;
     if (isEven(sanitizedStr)) {
