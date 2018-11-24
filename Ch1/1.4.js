@@ -15,18 +15,11 @@
 
 
  /**
-  * If string is even, the string must have two instances of any character in the string to
-  * be a palindrome permutation. 
-  * 
-  * If string is odd, the string must have two instances of any character in the string except for one character,
-  * the middle one...
-  *  
+  * Checks to see if an input string is a palindrome permutation by
+  * using the built-in Set object's property of not having more than one
+  * entry of equivalent value.
+  * @param string The string we're testing 
   */
-
-
-// tactcoa
-// aacctto
-
  function isPalindromePermutation(string) {
     let sanitizedStr = string.replace(/\s/g,'').toLowerCase().split('').join('');
     let sanitizedSet = new Set(sanitizedStr);
@@ -37,12 +30,14 @@
     else {
         expectedLength = Math.floor(sanitizedStr.length/2 + 1);
     }
-    // console.log("String: " + sanitizedStr.length);
-    // console.log("Set: " + sanitizedSet.size);
-    // console.log("Expected length: " + expectedLength);
     return sanitizedSet.size === expectedLength ? true : false;
  }
 
+ /**
+  * Checks to see if a string has an even number of characters
+  * or not.
+  * @param string String to check.
+  */
  function isEven(string) {
      return string.length % 2 == 0;
  }
