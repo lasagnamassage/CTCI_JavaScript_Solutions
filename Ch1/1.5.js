@@ -8,18 +8,24 @@
  * @author Ashaun Thomas
  */
 
-
  testCases = [
      ["pale", "ple"]
  ];
 
  function isEditAway(inputs) {
+    // best case of identical strings, thus true
     if (inputs[0] === inputs[1]) {
         return true;
+    }
+    // best case of no possible single edit solution due to
+    // out of bounds length difference, thus false
+    if (Math.abs(((inputs[0].length - inputs[1].length)) > 1)) {
+        return false;
     }
     let map1 = hashify(inputs[0]);
     let map2 = hashify(inputs[1]);
 
+    return map2;
  }
 
 
@@ -32,7 +38,9 @@
  * dka
  */
 function editOneCheck(map1, map2) {
-    
+    let smallest = (map1.size < map2.size) ? map1 : map2;
+    let largest = (smallest === map1) ? map2 : map1;
+    // Needs to pop matching pairs from largest
 }
 
 /**
