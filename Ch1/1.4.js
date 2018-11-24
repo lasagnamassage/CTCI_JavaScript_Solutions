@@ -42,6 +42,9 @@
      return string.length % 2 == 0;
  }
 
+ /**
+  * Runs test cases
+  */
  function main() {
      for (let i = 0; i < testCases.length; i++) {
          console.log(isPalindromePermutation(testCases[i]));

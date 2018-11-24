@@ -34,8 +34,6 @@
  * Checks for edit 1 possibility: character insertion
  * @param  string1 String to check for character insertion
  * @param  string2 String to check for character insertion
- * pale
- * dka
  */
 function editOneCheck(map1, map2) {
     let smallest = (map1.size < map2.size) ? map1 : map2;
@@ -57,6 +55,9 @@ function hashify(string) {
     return map;
 }
 
+/**
+ * Runs test cases
+ */
  function main() {
     for( let i = 0; i < testCases.length; i++) {
         console.log(isEditAway(testCases[i]));

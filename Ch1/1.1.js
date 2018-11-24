@@ -77,12 +77,17 @@ function isUniqueNoDataStructures(string) {
     
 }
 
-for (let i = 0; i < testCases.length; i++) {
-    console.log(`${testCases[i]} is unique?  ${isUnique(testCases[i])}`);
+/**
+ * Runs test cases
+ */
+function main() {
+    for (let i = 0; i < testCases.length; i++) {
+        console.log(`${testCases[i]} is unique?  ${isUnique(testCases[i])}`);
+    }
+
+    /*** Uncomment for alternative implementation ***/
+    // for (let i = 0; i < testCases.length; i++) {
+    //     console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
+    // }
 }
 
-// console.log('----------------No data structures---------------------');
-
-// for (let i = 0; i < testCases.length; i++) {
-//     console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
-// }

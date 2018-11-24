@@ -26,6 +26,9 @@ var testCases = [
     return trimmedString.replace(spaceRegex, REPLACEMENT_VALUE);
  }
 
+ /**
+  * Runs test cases
+  */
  function main() {
      for (let i = 0; i < testCases.length; i++) {
         console.log(URLify(testCases[i]));

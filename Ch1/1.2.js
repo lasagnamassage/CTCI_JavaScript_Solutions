@@ -70,8 +70,8 @@
      return string.replace('/\s/g', '').split('').sort().join('');
  }
 
- /**
-  * This function runs the desired function over test inputs.
+/**
+  * Runs test cases
   */
  function main() {
     for (let i = 0; i < testCases.length; i++) {
