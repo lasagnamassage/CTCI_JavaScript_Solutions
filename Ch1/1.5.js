@@ -9,7 +9,8 @@
  */
 
  testCases = [
-     ["pale", "ple"]
+     ["pale", "ple"],
+     ["pale", "ppl"]
  ];
 
  function isEditAway(inputs) {
@@ -22,15 +23,23 @@
     if (Math.abs(((inputs[0].length - inputs[1].length)) > 1)) {
         return false;
     }
-    let map1 = hashify(inputs[0]);
-    let map2 = hashify(inputs[1]);
-
-    return map2;
+    if (inputs[0].length === inputs[1].length) {
+        // We can only run a replace edit here 
+    }
+    else {
+        // We can only run add or remove edits here
+        let map1 = hashify(inputs[0]);
+        let map2 = hashify(inputs[1]); 
+        if (editOneCheck(map1,map2)) {
+            return true;
+        }
+        
+        return false;
+    }
  }
 
 
 /**
- * TODO: Finish this
  * Checks for edit 1 possibility: character insertion
  * @param  string1 String to check for character insertion
  * @param  string2 String to check for character insertion
@@ -39,7 +48,23 @@ function editOneCheck(map1, map2) {
     let smallest = (map1.size < map2.size) ? map1 : map2;
     let largest = (smallest === map1) ? map2 : map1;
     // Needs to pop matching pairs from largest
-}
+    for (let [key, value] of largest) {
+        if (largest.has(key) && smallest.has(key)) {
+            smallest.set(key, value - 1);
+            largest.set(key, value - 1);
+            if (smallest.get(key) == 0) {
+                smallest.delete(key);
+            }
+            if (largest.get(key) == 0) {
+                largest.delete(key);
+            }
+        }
+    }
+    if (smallest.size === 0 && largest.size === 1) {
+        return true;
+    }
+    return false;
+}   
 
 /**
  * Turns a string into a JS-native hashmap implementation.
