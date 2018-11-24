@@ -1,5 +1,5 @@
 /**
- * Given two strings, write a function to hecks if they are
+ * Given two strings, write a function to check if they are
  * one or zero edits away, given the following possible edits:
  * 1. Insert a character
  * 2. Remove a character
@@ -10,7 +10,7 @@
 
  testCases = [];
 
- function isEditAway(string) {
+ function isEditAway(string1, string2) {
 
  }
 
