@@ -45,6 +45,7 @@ function isInvalidASCII(str) {
     if (/^[\x00-\x7F]*$/.test(str) && str.length > ASCII_CHARACTERS) {
         return true;
     }
+    return false;
 }
 
 /**
@@ -56,6 +57,7 @@ function isInvalidUnicode(str) {
     if (str.length > UNICODE_CHARACTERS) {
         return true;
     }
+    return false;
 }
 
 
