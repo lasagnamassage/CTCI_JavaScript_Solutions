@@ -9,11 +9,37 @@
  * @author Ashaun Thomas
  */
 
- var testCases = [];
+ var testCases = [
+     'aabccccaaa'
+ ];
 
  function stringCompressor(string) {
-
+    let prevChar = null;
+    let charCounter = 0;
+    let compressedString = '';
+    for (let i = 0; i < string.length; i++) {
+        let currentChar = string.charAt(i);
+        if (!prevChar) {
+            prevChar = currentChar;
+            charCounter++;
+        }
+        else {
+            if (prevChar === currentChar) {
+                charCounter++;
+            }
+            else {
+                compressedString += (prevChar + charCounter);
+                currentCounter =  0;
+            }
+        }
+        console.log('prevChar: ' + prevChar);
+        console.log('currentChar: ' + currentChar);
+        console.log('charCounter: ' + charCounter);
+        console.log('compressedString: ' + compressedString);
+    }   
+    return compressedString;
  }
+
 
  /**
   * Runs test cases
@@ -23,3 +49,5 @@
          console.log(stringCompressor(testCases[i]));
      }
  }
+
+ main();
