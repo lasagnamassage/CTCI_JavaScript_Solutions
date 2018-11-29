@@ -10,34 +10,28 @@
  */
 
  var testCases = [
-     'aabccccaaa'
+     'aabccccaaa',
+     'aaaa',
+     ' lwq '
  ];
 
  function stringCompressor(string) {
-    let prevChar = null;
-    let charCounter = 0;
+    let cachedChar = string.charAt(0);
     let compressedString = '';
-    for (let i = 0; i < string.length; i++) {
-        let currentChar = string.charAt(i);
-        if (!prevChar) {
-            prevChar = currentChar;
-            charCounter++;
+    let freq = 1;
+    for (let i = 1; i < string.length; i++) {
+        let tempChar = string.charAt(i);
+        if (cachedChar == tempChar) {
+            freq++;
         }
         else {
-            if (prevChar === currentChar) {
-                charCounter++;
-            }
-            else {
-                compressedString += (prevChar + charCounter);
-                currentCounter =  0;
-            }
+            compressedString += `${cachedChar}${freq}`;
+            cachedChar = tempChar;
+            freq = 1; 
         }
-        console.log('prevChar: ' + prevChar);
-        console.log('currentChar: ' + currentChar);
-        console.log('charCounter: ' + charCounter);
-        console.log('compressedString: ' + compressedString);
-    }   
-    return compressedString;
+    }
+    compressedString += `${cachedChar}${freq}`;
+    return compressedString.length < string.length ? compressedString : string;
  }
 
 
