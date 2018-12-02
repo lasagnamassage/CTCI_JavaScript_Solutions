@@ -19,7 +19,6 @@ class Node {
         this.data = data;
         this.prev = null;
         this.next = null;
-        this.id = getID();
     }
 
     get prev() {
@@ -30,13 +29,6 @@ class Node {
         return this.next;
     }
 
-    get id() {
-        return this.id;
-    }
-
-    id(id) {
-        this.id = id; 
-    }
 
     prev(node) {
         this.prev = node;
@@ -45,34 +37,6 @@ class Node {
     next(node) {
         this.next = node;
     }
-}
-
-class IDGenerator {
-    constructor() {
-        this.usedIDs = {};
-    }
-    getID() {
-        let id;
-        do {
-            id = (Math.random() * 10000 + 1);
-        } while (usedIDs.hasOwnProperty(id));
-        usedIDs[id] = true;
-    }
-}
-
-
-/**
- * Generates IDs for nodes
- * @return generated id
- */
-function getID() {
-    let id;
-    let maxIDs = 10000;
-    do {
-        id = Math.random() * maxIDs + 1;
-    } while (usedIDs.hasOwnProperty(id));
-    usedIDs[id] = true;
-    return id;
 }
 
 /**
@@ -102,6 +66,19 @@ class LinkedList {
     }
 
     /**
+     * Prints all nodes 
+     */
+    printAll() {
+        let node = this.head;
+        let nameArr = [];
+        while (node != null) {
+            nameArr.push(node.data);
+            node = node.next;
+        }
+        console.log("Nodes by data: " + nameArr);
+    }
+
+    /**
      * Appends specified node to linked list
      * and configures necessary properties
      * @param node 
@@ -120,15 +97,15 @@ class LinkedList {
     }
 
     /**
-     * Removes a node in the list and reconfigures
+     * Removes first instance of node with equivalent data
+     * in the list and reconfigures
      * the "pointer" properties as needed.
-     * @todo Redo this for custom IDs. Currently list improperly handles nodes with congruent data
-     * @param nodeData Data of node to be removed
+     * @param node Node to be removed
      */
-    removeById(id) {
+    removeFirstInstanceOf(node) {
         let currentNode = this.head;
         while (currentNode != null) {
-            if (currentNode.id != id) {
+            if (currentNode.data != node.data) {
                 currentNode = currentNode.next;
             }
             else {
@@ -142,6 +119,7 @@ class LinkedList {
                 }
                 currentNode.prev = null;
                 currentNode.next = null;
+                console.log("removed " + node.data);
                 return;
             }
         }
@@ -157,12 +135,28 @@ let testCases = [
 
 /**
  * Removes duplicates by mapping node data in a linked list
- * to a Hashmap, then 
+ * to a Hashmap, then removing duplicates.
  * @todo Finish this function using linkedlist remove method and hashmap
  * @param linkedlist Linked list given 
  */
 function removeDuplicates(linkedlist) {
-
+    let currentNode = linkedlist.head;
+    let map = new Map();
+    do {
+        if (map.has(currentNode.data)) {
+            map.set(currentNode.data, map.get(currentNode.data) + 1);
+        }
+        else {
+            map.set(currentNode.data, 1);
+        }
+        currentNode = currentNode.next;
+    } while (currentNode != null);
+    for (let [key, value] of map) {
+        if (value > 1) {
+            linkedlist.removeFirstInstanceOf(value);
+        }
+    }
+    linkedlist.printAll();
 }
 
 /**
@@ -185,11 +179,8 @@ function generateListFrom(namesArr) {
  */
 function main() {
     for (let i = 0; i < testCases.length; i++) {
-        console.log(removeDuplicates(testCases[i]));
+        removeDuplicates(testCases[i]);
     }
 }
 
-while (currentNode != null) {
-    console.log(currentNode.data);
-    currentNode = currentNode.next;    
-}
+main();
