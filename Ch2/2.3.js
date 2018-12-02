@@ -40,21 +40,12 @@ class SinglyLinkedList {
      * @param node 
      */
     remove(node) {
-        let currentNode = this.tail;
-        if (currentNode == node) {
-            this.tail = currentNode.next;
-            currentNode.next = null;
+        if (node == null || node.next == null) {
+            return; // Can't perform operation
         }
-        while (currentNode.next != null) {
-            if (currentNode.next === node) {
-                console.log('match found!');
-                currentNode.next = currentNode.next.next;
-                currentNode.next.next = null;
-                return;
-            }
-            currentNode = currentNode.next;
-        }
-        console.log("Nothing found!");
+        let nextNode = node.next;
+        node.data = next.data;
+        node.next = nextNode.next;
     }
 
     /**
