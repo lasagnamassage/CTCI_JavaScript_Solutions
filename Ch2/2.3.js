@@ -37,6 +37,7 @@ class SinglyLinkedList {
 
     /**
      * Removes node by reference
+     * NOTE: doesn't work if deleting last node
      * @param node 
      */
     remove(node) {
