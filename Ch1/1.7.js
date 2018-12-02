@@ -1,5 +1,5 @@
 /**
- * Given an image represented as a square matric (N by N),
+ * Given an image represented as a square matrix (N by N),
  * where each pixel in the image is 4 bytes.
  * Write a method to rotate the image by 90 degrees.
  * Can you do this "in place"?
