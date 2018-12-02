@@ -6,6 +6,10 @@
  * @author Ashaun Thomas
  */
 
+
+// Holds IDs for specified nodes.
+var usedIDs = {};
+
  /**
   * Generic doubly-linked list Node implementation
   */
@@ -15,6 +19,7 @@ class Node {
         this.data = data;
         this.prev = null;
         this.next = null;
+        this.id = getID();
     }
 
     get prev() {
@@ -25,6 +30,14 @@ class Node {
         return this.next;
     }
 
+    get id() {
+        return this.id;
+    }
+
+    id(id) {
+        this.id = id; 
+    }
+
     prev(node) {
         this.prev = node;
     }
@@ -32,6 +45,34 @@ class Node {
     next(node) {
         this.next = node;
     }
+}
+
+class IDGenerator {
+    constructor() {
+        this.usedIDs = {};
+    }
+    getID() {
+        let id;
+        do {
+            id = (Math.random() * 10000 + 1);
+        } while (usedIDs.hasOwnProperty(id));
+        usedIDs[id] = true;
+    }
+}
+
+
+/**
+ * Generates IDs for nodes
+ * @return generated id
+ */
+function getID() {
+    let id;
+    let maxIDs = 10000;
+    do {
+        id = Math.random() * maxIDs + 1;
+    } while (usedIDs.hasOwnProperty(id));
+    usedIDs[id] = true;
+    return id;
 }
 
 /**
@@ -84,20 +125,13 @@ class LinkedList {
      * @todo Redo this for custom IDs. Currently list improperly handles nodes with congruent data
      * @param nodeData Data of node to be removed
      */
-    remove(nodeData) {
+    removeById(id) {
         let currentNode = this.head;
         while (currentNode != null) {
-            if (currentNode.data != nodeData) {
+            if (currentNode.id != id) {
                 currentNode = currentNode.next;
             }
             else {
-                // if (nodeData === this.head.data) {
-                //     console.log('removing head!!');
-                //     let prevNode = nodeData.prev;
-                //     prevNode.next = null;
-                //     nodeData.prev = null;
-                //     this.head = nextNode;
-                // }
                 let prevNode = currentNode.prev;
                 let nextNode = currentNode.next;
                 if (prevNode) {
@@ -117,7 +151,7 @@ class LinkedList {
 
 
 let testCases = [
-    generateListFrom(['ash','shawn','srini','caleb']),
+    generateListFrom(['ash','shawn', 'shawn', 'srini','caleb']),
     generateListFrom(['ann', 'dave', 'nishanth'])
 ];
 
@@ -154,13 +188,6 @@ function main() {
         console.log(removeDuplicates(testCases[i]));
     }
 }
-
-let firstList = testCases[0];
-let currentNode = firstList.head;
-
-let nodeToDelete = firstList.head.next.data;
-console.log("Node to delete: " + nodeToDelete);
-firstList.remove(nodeToDelete);
 
 while (currentNode != null) {
     console.log(currentNode.data);
