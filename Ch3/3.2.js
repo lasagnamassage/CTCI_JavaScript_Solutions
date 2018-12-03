@@ -59,5 +59,20 @@ class MinStack extends Stack {
         let node = new StackNode(data);
         node.next = this.top === null ? null : this.top;
         this.top = node;
+        if (!this.min.top || node.data < this.min.top) {
+            this.min.push(node);
+        }
+    }
+
+    pop() {
+        if (this.isEmpty()) {
+            return false;
+        }
+        if (this.min.top.data === this.top.data) {
+            this.min.pop();
+        }
+        let topData = this.top.data;
+        this.top = this.top.next;
+        return topData;
     }
 }
