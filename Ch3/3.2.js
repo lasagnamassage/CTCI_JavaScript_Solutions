@@ -75,4 +75,11 @@ class MinStack extends Stack {
         this.top = this.top.next;
         return topData;
     }
+
+    min() {
+        if (this.min.isEmpty()) {
+            return false;
+        }
+        return this.min.peek();
+    }
 }
