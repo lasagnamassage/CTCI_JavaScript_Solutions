@@ -6,7 +6,8 @@
 let testCases = [
     'abcd',
     'abbc',
-    '1234'
+    '1234',
+    ' s k o l'
 ];
 
 /**
@@ -93,3 +94,4 @@ function main() {
     // }
 }
 
+main();
