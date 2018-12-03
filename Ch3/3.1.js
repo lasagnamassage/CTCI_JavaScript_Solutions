@@ -31,7 +31,7 @@ let testCases = [
             return false; // empty stack
         }
         let topData = this.top.data;
-        this.top = top.next;
+        this.top = this.top.next;
         return topData;
     }
 
@@ -41,13 +41,8 @@ let testCases = [
      */
     push(data) {
         let node = new StackNode(data);
-        if (this._top) {
-            node.next = this._top;
-            this._top = node;
-        }
-        else {
-            this._top = node;
-        }
+        node.next = this.top === null ? null : this.top;
+        this.top = node;
     }
 
     /**
