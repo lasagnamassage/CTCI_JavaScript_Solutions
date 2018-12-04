@@ -23,6 +23,19 @@ let testCases = [
 const ASCII_CHARACTERS = 256;
 const UNICODE_CHARACTERS = 1114112;
 
+/**
+ * By ECMAScript standards (http://www.ecma-international.org/ecma-262/6.0/index.html#sec-set-objects),
+ * all browser implementations of "Set" objects must be "sublinear". This could be O(log n),
+ * O(sqrt(n)), or any other Big O in which the limit of the ratio created by f(x)/g(x), where 
+ * f(x) = sublinear function
+ * g(x) = n 
+ * is 0. 
+ * 
+ * This means worst-case, Set creation is still better than linear time algorithms.
+ * 
+ * The split function however is O(N), thus this algotithm is O(N)
+ * @param string 
+ */
 function isUnique(string) {
     if (isInvalidASCII(string) || isInvalidUnicode(string)) {
         return false;
