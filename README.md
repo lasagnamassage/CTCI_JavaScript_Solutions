@@ -1,5 +1,5 @@
 # CTCI-JavaScript-Solutions
-My solutions to every problem in Cracking the Code Interview...In JavaScript.
+My solutions to every problem in Cracking the Code Interview...In JavaScript!
 
 ## How to use
 1. Download Node if you haven't already.
