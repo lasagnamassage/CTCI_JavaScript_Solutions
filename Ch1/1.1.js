@@ -76,35 +76,12 @@ function isInvalidUnicode(str) {
 
 
 /**
- * Checks to see if a string is unique without the use of 
- * additional data structures.
- * TODO: Fix this, it's broken.
- * @param string String of characters to analyze
- */
-function isUniqueNoDataStructures(string) {
-    for (let i = 0; i < string.length; i++) {
-        for (let j = i; j < string.length; j++ ) {
-            if (string[i] === string[j]) {
-                return false;
-            }
-        }
-    }
-    return true;
-    
-}
-
-/**
  * Runs test cases
  */
 function main() {
     for (let i = 0; i < testCases.length; i++) {
         console.log(`${testCases[i]} is unique?  ${isUnique(testCases[i])}`);
     }
-
-    /*** Uncomment for alternative implementation ***/
-    // for (let i = 0; i < testCases.length; i++) {
-    //     console.log(`${testCases[i]} is unique? ${isUniqueNoDataStructures(testCases[i])}`);
-    // }
 }
 
 main();
